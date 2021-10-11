@@ -1,0 +1,19 @@
+main {
+  height: 65vh;
+  display: flex;
+  align-items: center;
+}
+.heading {
+  font-size: 3rem;
+}
+.sub-heading {
+  font-size: 1.2rem;
+  color: var(--paragraph);
+}
+.external-links {
+  width: 65%;
+  display: flex;
+  margin: 20px 0;
+  justify-content: space-between;
+  align-items: center;
+}

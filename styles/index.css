@@ -1,0 +1,24 @@
+:root {
+  --background: #16161a;
+  --headline: #fffffe;
+  --paragraph: #94a1b2;
+  --button: #7f5af0;
+  --button-text: #fffffe;
+  --secondary: #2cb67d;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background);
+  color: var(--headline);
+  width: 80%;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+  color: var(--headline);
+}
