@@ -125,7 +125,7 @@ let skills = [
   {
     "skillheading": "DevOps",
     "skillName": "Hyper Terminal",
-    "url": "https://img.shields.io/badge/-hyper%20termianl-05122A?style=flat&logo=hyper&logoColor=ffffff",
+    "url": "https://img.shields.io/badge/-hyper-05122A?style=flat&logo=hyper&logoColor=ffffff",
     "tags": "terminal emulator hyper command line"
   },
 ];
