@@ -1,214 +1,163 @@
-// window.addEventListener("scroll", (event) => {
-//   let scroll = this.scrollY;
-//   console.log("here " + scroll);
-// });
+/* ================================================================
+   THEME TOGGLE
+   ================================================================
+   3-state cycle: system → light → dark → system
+   Setting is persisted in localStorage under 'hb-theme'.
 
-let skills = [
-  {
-    "skillheading": "Frontend",
-    "skillName": "HTML",
-    "url": "https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5",
-    "tags": "html frontend static site hypertext markup language"
-  },
-  {
-    "skillheading": "Frontend",
-    "skillName": "CSS",
-    "url": "https://img.shields.io/badge/CSS-05122A?&style=flat&logo=css3&logoColor=blue",
-    "tags": "css frontend styles styling layout"
-  },
-  {
-    "skillheading": "Frontend",
-    "skillName": "Bootstrap",
-    "url": "https://img.shields.io/badge/Bootstrap-05122A?style=flat&logo=bootstrap&logoColor=563D7C",
-    "tags": "frontend css framework bootstrap responsive design"
-  },
-  {
-    "skillheading": "Frontend",
-    "skillName": "JavaScript",
-    "url": "https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript",
-    "tags": "frontend scripting language js"
-  },
-  {
-    "skillheading": "Frontend",
-    "skillName": "React",
-    "url": "https://img.shields.io/badge/-React-05122A?style=flat&logo=react",
-    "tags": "frontend js framework react single page application"
-  },
-  {
-    "skillheading": "Frontend",
-    "skillName": "NextJS",
-    "break": true,
-    "url": "https://img.shields.io/badge/Next.js-05122A?style=flat&logo=nextdotjs&logoColor=white",
-    "tags": "frontend js framework next.js server-side rendering"
-  },
-  {
-    "skillheading": "Backend",
-    "skillName": "NodeJS",
-    "url": "https://img.shields.io/badge/-Node.js-05122A?style=flat&logo=node.js",
-    "tags": "backend js runtime node.js server-side"
-  },
-  {
-    "skillheading": "Backend",
-    "skillName": "ExpressJS",
-    "url": "https://img.shields.io/badge/Express.js-05122A?style=flat",
-    "tags": "backend js framework express.js web server"
-  },
-  {
-    "skillheading": "Backend",
-    "skillName": "Firebase",
-    "url": "https://img.shields.io/badge/-Firebase-05122A?style=flat&logo=firebase&logoColor=FEC260",
-    "tags": "backend platform firebase database cloud services"
-  },
-  {
-    "skillheading": "Backend",
-    "skillName": "MongoDB",
-    "url": "https://img.shields.io/badge/MongoDB-05122A?style=flate&logo=mongodb&logoColor=4EA94B",
-    "tags": "backend database mongodb nosql"
-  },
-  {
-    "skillheading": "Backend",
-    "skillName": "Redis",
-    "break": true,
-    "url": "https://img.shields.io/badge/redis-%2305122A.svg?&style=flat&logo=redis&logoColor=DD0031",
-    "tags": "backend data storage cache redis"
-  },
-  {
-    "skillheading": "Analytics",
-    "skillName": "Google Analytics",
-    "url": "https://img.shields.io/badge/Google%20Analytics-05122A?style=flat&logo=google%20analytics&logoColor=E37400",
-    "tags": "search platform apache solr"
-  },
-  {
-    "skillheading": "Analytics",
-    "skillName": "Google Tag Manager",
-    "url": "https://img.shields.io/badge/Google%20Tag%20Manager-05122A?style=flat&logo=google%20tag%20manager&logoColor=4385f5",
-    "break": true,
-    "tags": "search platform apache solr"
-  },
-  {
-    "skillheading": "Tools",
-    "skillName": "Apache Solr",
-    "url": "https://img.shields.io/badge/Solr-05122A?style=flat&logo=apache%20solr&logoColor=#ffffff",
-    "tags": "search platform apache solr"
-  },
-  {
-    "skillheading": "Tools",
-    "skillName": "Apache Kafka",
-    "break": true,
-    "url": "https://img.shields.io/badge/Apache%20Kafka-05122A?flat&logo=apachekafka",
-    "tags": "search platform apache solr"
-  },
-  {
-    "skillheading": "DevOps",
-    "skillName": "Git",
-    "url": "https://img.shields.io/badge/-Git-05122A?style=flat&logo=git",
-    "tags": "version control git repository collaboration"
-  },
-  {
-    "skillheading": "DevOps",
-    "skillName": "GitHub",
-    "url": "https://img.shields.io/badge/-GitHub-05122A?style=flat&logo=github",
-    "tags": "version control github repository open source"
-  },
-  {
-    "skillheading": "DevOps",
-    "skillName": "Postman",
-    "url": "https://img.shields.io/badge/-postman-05122A?style=flat&logo=postman",
-    "tags": "api testing postman development"
-  },
-  {
-    "skillheading": "DevOps",
-    "skillName": "Visual Studio Code",
-    "url": "https://img.shields.io/badge/-Visual%20Studio%20Code-05122A?style=flat&logo=visual-studio-code&logoColor=007ACC",
-    "tags": "code editor vs code development"
-  },
-  {
-    "skillheading": "DevOps",
-    "skillName": "Hyper Terminal",
-    "url": "https://img.shields.io/badge/-hyper-05122A?style=flat&logo=hyper&logoColor=ffffff",
-    "tags": "terminal emulator hyper command line"
-  },
-];
+   To add a new theme:
+     1. Add the theme name to the THEMES array below
+     2. Add the corresponding icon SVG in index.html with id="icon-<name>"
+     3. Add the CSS block [data-theme="<name>"] { ... } in index.css
+   ================================================================ */
+
+const THEME_KEY = 'hb-theme';
+const THEMES    = ['system', 'light', 'dark'];
+
+let themeSetting = localStorage.getItem(THEME_KEY) || 'system';
+
+const themeIcons = {
+  system: document.getElementById('icon-system'),
+  light:  document.getElementById('icon-light'),
+  dark:   document.getElementById('icon-dark'),
+};
+
+const themeLabels = {
+  system: 'System theme (auto)',
+  light:  'Light theme',
+  dark:   'Dark theme',
+};
+
+function applyTheme(setting) {
+  themeSetting = setting;
+  localStorage.setItem(THEME_KEY, setting);
+
+  const prefersDark  = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const effectiveTheme = setting === 'system' ? (prefersDark ? 'dark' : 'light') : setting;
+
+  document.documentElement.setAttribute('data-theme', effectiveTheme);
+  document.documentElement.setAttribute('data-theme-setting', setting);
+
+  Object.entries(themeIcons).forEach(([key, el]) => {
+    if (el) el.style.display = key === setting ? 'block' : 'none';
+  });
+
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.setAttribute('title', themeLabels[setting]);
+}
+
+document.getElementById('themeToggle')?.addEventListener('click', () => {
+  const idx  = THEMES.indexOf(themeSetting);
+  const next = THEMES[(idx + 1) % THEMES.length];
+  applyTheme(next);
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  if (themeSetting === 'system') applyTheme('system');
+});
+
+applyTheme(themeSetting);
 
 
-let skillsElem = document.getElementById("skills-ul")
+/* ================================================================
+   MOBILE NAVIGATION
+================================================================ */
 
-skills.map(skill => {
-  const br = document.createElement("br");
+const menuBtn  = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
 
-  const li = document.createElement("li");
-  li.ariaLabel = skill.tags
+menuBtn?.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  menuBtn.classList.toggle('active', isOpen);
+  menuBtn.setAttribute('aria-expanded', String(isOpen));
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
 
-  const img = document.createElement("img");
-  img.src = skill.url
-  img.alt = skill.skillName + " icon"
-  // img.width = "50"
-  img.height = "30"
+navLinks?.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.classList.remove('active');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
 
-  li.appendChild(img)
-
-  skillsElem.appendChild(li)
-
-  if (skill.break) {
-    skillsElem.appendChild(br)
+// Close mobile menu on outside click
+document.addEventListener('click', (e) => {
+  if (
+    navLinks.classList.contains('open') &&
+    !navLinks.contains(e.target) &&
+    !menuBtn.contains(e.target)
+  ) {
+    navLinks.classList.remove('open');
+    menuBtn.classList.remove('active');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
-})
+});
 
-let projects = [
-  {
-    "name": "React Todo List",
-    "url": "https://hitesh-todolist.netlify.app/",
-    "git": "https://github.com/hiteshcodes/react-todo-list",
+
+/* ================================================================
+   SCROLL REVEAL
+   Adds .visible to .reveal elements as they enter the viewport.
+================================================================ */
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
   },
-  {
-    "name": "Ecommerce Store",
-    "url": "https://hiteshcodes.github.io/E-commerce/",
-    "git": "https://github.com/hiteshcodes/E-commerce",
+  { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+);
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+/* ================================================================
+   ACTIVE NAV HIGHLIGHT ON SCROLL
+   Highlights the nav link matching the currently visible section.
+================================================================ */
+
+const sections    = document.querySelectorAll('section[id]');
+const navLinkEls  = document.querySelectorAll('.nav-link');
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinkEls.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
   },
-  {
-    "name": "Expense Manager",
-    "url": "https://github.com/hiteshcodes/react-expense-manager",
-    "git": "",
+  { threshold: 0.4 }
+);
+
+sections.forEach(section => sectionObserver.observe(section));
+
+
+/* ================================================================
+   NAV SCROLL SHADOW
+   Adds a subtle shadow to the nav when the user scrolls down.
+================================================================ */
+
+const header = document.getElementById('header');
+
+const headerObserver = new IntersectionObserver(
+  ([entry]) => {
+    header.style.boxShadow = entry.isIntersecting ? '' : '0 1px 24px rgba(0,0,0,0.15)';
   },
-];
+  { threshold: 1 }
+);
 
+const yearEl = document.getElementById('footer-year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-let projectsElem = document.getElementById("projects-ul")
-
-projects.map(skill => {
-  const br = document.createElement("br");
-  const span = document.createElement("span");
-  span.innerText = " - "
-
-  const li = document.createElement("li");
-
-  const a = document.createElement("a");
-
-  a.href = skill.url
-  a.alt = skill.name
-  a.target = "_blank"
-  a.innerText = skill.name
-
-  const img = document.createElement("img");
-  img.src = "./icons/github.svg"
-  img.alt = "git icon"
-  // img.width = "50"
-  img.height = "20"
-
-  const git = document.createElement("a");
-  git.href = skill.git
-  git.alt = skill.name
-  git.target = "_blank"
-  // git.appendChild(img)
-  git.innerText = "git"
-
-  li.appendChild(a)
-  li.appendChild(span)
-  li.appendChild(git)
-
-  projectsElem.appendChild(li)
-
-  if (skill.break) {
-    projectsElem.appendChild(br)
-  }
-})
+const sentinel = document.createElement('div');
+sentinel.style.cssText = 'position:absolute;top:1px;height:1px;width:1px;pointer-events:none;';
+document.body.prepend(sentinel);
+headerObserver.observe(sentinel);

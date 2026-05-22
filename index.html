@@ -2,88 +2,454 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords"
-        content="hitesh, hiteshcodes, hitesh codes, hiteshcode, hitesh code, hiteshbhargav, hitesh bhargav">
-    <meta name="description" content="Hitesh Bhargav's portfolio page showcasing his work and projects.">
-    <meta name="author" content="Hitesh Bhargav">
-    <meta name="audience" content="all">
-    <meta name="designer" content="Hitesh Bhargav">
-    <title>hiteshcodes | Portfolio | Software Developer</title>
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/fonts.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hitesh Bhargav — Full Stack Software Engineer specializing in headless eCommerce, VTEX, React, Node.js, and AWS. 4+ years building scalable B2B, B2C, and marketplace platforms.">
+  <meta name="keywords" content="Hitesh Bhargav, Full Stack Developer, VTEX Developer, React Developer, Node.js, eCommerce, hiteshcodes, headless commerce">
+  <meta name="author" content="Hitesh Bhargav">
+  <meta property="og:title" content="Hitesh Bhargav — Full Stack Software Engineer">
+  <meta property="og:description" content="Building scalable eCommerce platforms with VTEX, React, Node.js, and AWS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hiteshcodes.dev">
+  <title>Hitesh Bhargav — Full Stack Software Engineer</title>
+  <link rel="stylesheet" href="./styles/fonts.css">
+  <link rel="stylesheet" href="./styles/index.css">
+  <!-- Prevent theme flash: apply theme before paint -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('hb-theme') || 'system';
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var effective = saved === 'system' ? (prefersDark ? 'dark' : 'light') : saved;
+      document.documentElement.setAttribute('data-theme', effective);
+      document.documentElement.setAttribute('data-theme-setting', saved);
+    })();
+  </script>
 </head>
 
 <body>
-    <header>
-        <nav class="nav">
-            <div class="logo">
-                <a href="/" title="Hitesh Bhargav | Software Developer">hiteshcodes</a>
-                <span></span>
-                <span class="span-small1"></span>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="header" id="header">
+    <nav class="nav container" role="navigation" aria-label="Main navigation">
+      <a href="/" class="nav-logo" aria-label="Hitesh Bhargav — Home">
+        hitesh<span class="nav-logo-dot">.</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="System theme">
+          <!-- Monitor icon — system -->
+          <svg id="icon-system" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <!-- Sun icon — light -->
+          <svg id="icon-light" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Moon icon — dark -->
+          <svg id="icon-dark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <button class="nav-hamburger" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home" aria-label="Introduction">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Hi, I'm</p>
+          <h1 class="hero-name">Hitesh Bhargav</h1>
+          <p class="hero-title">Full Stack Software Engineer</p>
+          <p class="hero-summary">
+            4+ years building scalable B2B, B2C, and marketplace eCommerce platforms.
+            Specialized in headless commerce architecture, VTEX platform development,
+            and cloud-native AWS systems.
+          </p>
+          <div class="hero-meta">
+            <span class="hero-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Mumbai, India
+            </span>
+            <span class="hero-meta-item">
+              <span class="status-dot" aria-hidden="true"></span>
+              Open to opportunities
+            </span>
+          </div>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+          </div>
+          <div class="hero-social">
+            <a href="https://github.com/hiteshcodes" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/hiteshcodes" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="mailto:hiteshbhargav420@gmail.com" class="social-icon-link" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.instagram.com/hiteshcodes" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <span>scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills" aria-label="Technical Skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">What I work with</span>
+          <h2 class="section-title">Technical Skills</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group reveal">
+            <h3 class="skill-group-label">Languages</h3>
+            <div class="tag-list">
+              <span class="tag">JavaScript</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Python</span>
             </div>
-            <div class="nav-links">
-                <li><a href="#skills" title="About Hitesh Bhargav">Skills</a></li>
-                <li><a href="#projects" title="Hitesh Bhargav's GitHub Repositories">Work</a></li>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group-label">Backend & Cloud</h3>
+            <div class="tag-list">
+              <span class="tag">Node.js</span>
+              <span class="tag">NestJS</span>
+              <span class="tag">AWS Lambda</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">S3</span>
+              <span class="tag">SQS</span>
+              <span class="tag">Step Functions</span>
+              <span class="tag">CloudFormation</span>
             </div>
-        </nav>
-    </header>
-    <main>
-        <div class="main-wrapper">
-            <div class="about">
-                <h1 class="heading">Hi, I'm Hitesh</h1>
-                <h2 class="sub-heading">Software Developer</h2>
-                <div class="para">
-                    <p>
-                        I am a software developer with experience in developing innovative applications and projects. My
-                        expertise includes front-end and back-end development, as well as collaborating with
-                        cross-functional
-                        teams to deliver high-quality software.
-                    </p>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group-label">Frontend</h3>
+            <div class="tag-list">
+              <span class="tag">ReactJS</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">GraphQL</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group-label">E-commerce</h3>
+            <div class="tag-list">
+              <span class="tag tag-accent">VTEX IO</span>
+              <span class="tag">VTEX FastStore</span>
+              <span class="tag">Shopify</span>
+              <span class="tag">Marketplace Architecture</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group-label">Databases & Search</h3>
+            <div class="tag-list">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Redis</span>
+              <span class="tag">DynamoDB</span>
+              <span class="tag">Apache Solr</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group-label">DevOps & Integration</h3>
+            <div class="tag-list">
+              <span class="tag">Docker</span>
+              <span class="tag">Jenkins</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Nginx</span>
+              <span class="tag">Apache Kafka</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group-label">Analytics</h3>
+            <div class="tag-list">
+              <span class="tag">Google Analytics</span>
+              <span class="tag">Google Tag Manager</span>
+              <span class="tag">Apache Superset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section" id="experience" aria-label="Work Experience">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Where I've worked</span>
+          <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-body">
+              <div class="timeline-header">
+                <div class="timeline-title-group">
+                  <h3 class="timeline-company">Logixal Cloud Solutions</h3>
+                  <p class="timeline-role">Full Stack Software Engineer · E-commerce Specialist</p>
                 </div>
+                <span class="timeline-period">July 2022 — Present</span>
+              </div>
+
+              <div class="timeline-subroles">
+
+                <div class="timeline-subrole">
+                  <h4>Solution Architect · Food &amp; Beverages Ordering Platform</h4>
+                  <ul>
+                    <li>Architected a scalable B2C headless ordering platform using VTEX IO and AWS supporting high-volume transaction spikes</li>
+                    <li>Engineered robust middleware to orchestrate integrations with legacy POS systems, ERPs, and third-party auth providers</li>
+                    <li>Designed custom checkout orchestration and authentication integrations for enterprise operational workflows</li>
+                    <li>Delivered 99.9% uptime during large-scale live event commerce operations</li>
+                  </ul>
+                </div>
+
+                <div class="timeline-subrole">
+                  <h4>Project Lead · Strategic POCs &amp; Pre-Sales</h4>
+                  <ul>
+                    <li>Led technical solutioning for high-stakes VTEX eCommerce POCs under strict deadlines</li>
+                    <li>Defined project estimations, technical roadmaps, and client proposals for global marketplace initiatives</li>
+                    <li>Managed cross-functional teams to align deliverables with business goals</li>
+                  </ul>
+                </div>
+
+                <div class="timeline-subrole">
+                  <h4>Backend Engineer · AI/ML Powered Data Engineering Suite</h4>
+                  <ul>
+                    <li>Built async messaging stream using Apache Kafka to ingest data from Facebook, Instagram, and Google Analytics into a centralized ML engine</li>
+                    <li>Engineered high-performance APIs in Node.js with Apache Solr for million-record datasets</li>
+                    <li>Built a custom BFF layer using Next.js, reducing frontend data over-fetching by 35%</li>
+                  </ul>
+                </div>
+
+                <div class="timeline-subrole">
+                  <h4>Full Stack Developer · VTEX Personalization Plugin</h4>
+                  <ul>
+                    <li>Led development of a full-stack VTEX IO Plugin utilizing React, Node.js, and AWS Lambda</li>
+                    <li>Integrated Amazon Personalize for real-time storefront recommendations, boosting user engagement</li>
+                    <li>Implemented GDPR-compliant data handling using AWS DynamoDB and S3</li>
+                  </ul>
+                </div>
+
+                <div class="timeline-subrole">
+                  <h4>Software Engineer · Multi-tenant Marketplace &amp; Storefronts</h4>
+                  <ul>
+                    <li>Developed custom Shopify and Headless Commerce plugins including Assembly Options and Subscription Management</li>
+                    <li>Utilized Node.js Worker Threads for heavy data transformation, improving server-side processing efficiency</li>
+                    <li>Collaborated on multi-tenant database schema architecture enabling independent vendor workflows</li>
+                  </ul>
+                </div>
+
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Add Skills section -->
-        <section class="skills" id="skills">
-            <h2>Skills</h2>
-            <ul id="skills-ul"></ul>
-        </section>
-
-        <!-- Add Projects section -->
-        <section class="projects" id="projects">
-            <h2>Projects</h2>
-            <ul id="projects-ul">
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <div class="external-links">
-            <a href="https://github.com/hiteshcodes" target="_blank" title="Hitesh Bhargav's GitHub">
-                <img src="./icons/github.svg" alt="GitHub icon"></a>
-            <a href="https://www.linkedin.com/in/hiteshcodes" target="_blank" title="Hitesh Bhargav's LinkedIn">
-                <img src="./icons/linkedin.svg" alt="LinkedIn icon"></a>
-            <a href="mailto:hiteshbhargav420@gmail.com" target="_blank" title="Email Hitesh Bhargav">
-                <img src="./icons/email.svg" alt="Email icon"></a>
-            <a href="https://www.instagram.com/hiteshcodes" target="_blank" title="Hitesh Bhargav's Instagram">
-                <img src="./icons/instagram.svg" alt="Instagram icon"></a>
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects" aria-label="Key Projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">What I've built</span>
+          <h2 class="section-title">Key Projects</h2>
         </div>
-        <small>Made with ❤️ by Hitesh Bhargav</small>
-    </footer>
+        <p class="section-note reveal">Professional projects delivered at Logixal Cloud Solutions</p>
+        <div class="projects-grid">
 
-    <script src="./scripts/index.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HF6WJBJ0C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+          <article class="project-card reveal">
+            <div class="project-card-top">
+              <div class="project-badges">
+                <span class="badge badge-outline">Quick Commerce</span>
+                <span class="badge badge-accent">Professional</span>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3 class="project-title">F&amp;B Ordering Platform</h3>
+            <p class="project-desc">Architected a high-concurrency headless ordering system using VTEX IO and AWS. Managed the full project lifecycle with complex external system integration and custom checkout orchestration, maintaining 99.9% uptime during large-scale live events.</p>
+            <div class="tag-list project-tags">
+              <span class="tag">VTEX IO</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Custom Checkout</span>
+            </div>
+          </article>
 
-      gtag('config', 'G-2HF6WJBJ0C');
-    </script>
+          <article class="project-card reveal">
+            <div class="project-card-top">
+              <div class="project-badges">
+                <span class="badge badge-outline">Frontend Performance</span>
+                <span class="badge badge-accent">Professional</span>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3 class="project-title">VTEX FastStore Implementation</h3>
+            <p class="project-desc">Spearheaded the transition to a high-performance storefront using FastStore hooks and Headless CMS, achieving sub-second page loads and significantly improved Core Web Vitals scores.</p>
+            <div class="tag-list project-tags">
+              <span class="tag">VTEX FastStore</span>
+              <span class="tag">React</span>
+              <span class="tag">Headless CMS</span>
+              <span class="tag">GraphQL</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card-top">
+              <div class="project-badges">
+                <span class="badge badge-outline">Analytics</span>
+                <span class="badge badge-accent">Professional</span>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3 class="project-title">Custom Shopify Analytics App</h3>
+            <p class="project-desc">Built a Node.js and GraphQL-based application for automated store data extraction and competitive analysis, enabling data-driven decision-making across retail clients.</p>
+            <div class="tag-list project-tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">Shopify APIs</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card-top">
+              <div class="project-badges">
+                <span class="badge badge-outline">Omnichannel</span>
+                <span class="badge badge-accent">Professional</span>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <h3 class="project-title">Omnichannel Tracking Pipeline</h3>
+            <p class="project-desc">Designed a unified tracking layer using GTM and GA4 to monitor conversion funnels across B2B and B2C touchpoints, providing actionable cross-channel analytics insights.</p>
+            <div class="tag-list project-tags">
+              <span class="tag">Google Tag Manager</span>
+              <span class="tag">GA4</span>
+              <span class="tag">B2B/B2C</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION & ACHIEVEMENTS ===== -->
+    <section class="section" id="education" aria-label="Education and Achievements">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Background</span>
+          <h2 class="section-title">Education &amp; Achievements</h2>
+        </div>
+        <div class="edu-grid">
+
+          <div class="edu-card reveal">
+            <div class="edu-card-accent" aria-hidden="true"></div>
+            <div class="edu-card-body">
+              <span class="edu-label">Education</span>
+              <h3>Master of Computer Applications</h3>
+              <p class="edu-institution">University of Mumbai</p>
+              <p class="edu-year">Graduated 2022</p>
+            </div>
+          </div>
+
+          <div class="edu-card reveal">
+            <div class="edu-card-accent edu-card-accent--secondary" aria-hidden="true"></div>
+            <div class="edu-card-body">
+              <span class="edu-label">Award</span>
+              <h3>Service Excellence Award</h3>
+              <p class="edu-institution">Logixal Cloud Solutions · 2025</p>
+              <p class="edu-desc">Recognized for technical leadership and ensuring high-availability performance across mission-critical enterprise commerce platforms.</p>
+            </div>
+          </div>
+
+          <div class="edu-card reveal">
+            <div class="edu-card-accent" aria-hidden="true"></div>
+            <div class="edu-card-body">
+              <span class="edu-label">Certification</span>
+              <h3>VTEX Certified Developer</h3>
+              <p class="edu-institution">VTEX Platform</p>
+              <p class="edu-desc">Certified in VTEX IO platform development and headless commerce architecture.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section section--contact" id="contact" aria-label="Contact">
+      <div class="container">
+        <div class="contact-inner reveal">
+          <span class="section-eyebrow">Get in touch</span>
+          <h2 class="section-title">Let's Work Together</h2>
+          <p class="contact-desc">
+            Whether you have a project in mind, a role to discuss, or just want to connect —
+            my inbox is always open.
+          </p>
+          <a href="mailto:hiteshbhargav420@gmail.com" class="btn btn-primary btn-lg">
+            Say Hello
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <div class="contact-social">
+            <a href="https://github.com/hiteshcodes" target="_blank" rel="noopener noreferrer" class="contact-social-link" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/hiteshcodes" target="_blank" rel="noopener noreferrer" class="contact-social-link" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://www.instagram.com/hiteshcodes" target="_blank" rel="noopener noreferrer" class="contact-social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/" class="footer-logo" aria-label="Home">hitesh<span class="nav-logo-dot">.</span></a>
+      <p class="footer-copy">&copy; <span id="footer-year"></span> Hitesh Bhargav · hiteshcodes.dev</p>
+    </div>
+  </footer>
+
+  <script src="./scripts/index.js"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HF6WJBJ0C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-2HF6WJBJ0C');
+  </script>
+
 </body>
-
 </html>
