@@ -640,8 +640,9 @@ button {
    EXPERIENCE TIMELINE
 ================================================================ */
 .timeline {
+  --timeline-gap: var(--sp-8);
   position: relative;
-  padding-left: var(--sp-8);
+  padding-left: var(--timeline-gap);
 }
 
 .timeline::before {
@@ -661,7 +662,7 @@ button {
 
 .timeline-marker {
   position: absolute;
-  left: calc(-1 * var(--sp-8) - 5px);
+  left: calc(-1 * var(--timeline-gap) - 5px);
   top: 14px;
   width: 12px;
   height: 12px;
@@ -1084,7 +1085,7 @@ button {
   }
 
   .timeline {
-    padding-left: var(--sp-6);
+    --timeline-gap: var(--sp-6);
   }
 
   .timeline-body {
