@@ -3,56 +3,55 @@
    ================================================================
    Architecture: CSS custom properties as design tokens.
 
-   To add a NEW COLOR THEME (e.g., "solarized"):
-     1. Add [data-theme="solarized"] { ... } below with overrides
-     2. In scripts/index.js, add "solarized" to the THEMES array
+   HOW TO SWITCH THEMES (CSS only — no JS needed):
+     1. Find the THEME PRESETS section below
+     2. Comment out the currently active theme block
+     3. Uncomment the theme you want to activate
+     Only one theme block should be uncommented at a time.
 
-   To change the ACCENT COLOR across all themes:
-     1. Update --clr-accent and --clr-accent-rgb in :root
-     2. Optionally update --clr-secondary for the secondary color
+   HOW TO ADD A NEW THEME:
+     1. Copy any inactive theme block in the THEME PRESETS section
+     2. Paste it, give it a label, pick your accent + secondary colors
+     3. Comment out the previously active block
 
    Token reference:
+     --clr-accent      Primary accent (buttons, links, highlights)
+     --clr-secondary   Secondary accent (status dot, badges)
      --clr-bg          Page background
      --clr-surface     Card/panel background
-     --clr-surface-2   Slightly elevated surface (hover states, inputs)
+     --clr-surface-2   Elevated surface (hover states)
      --clr-border      Subtle dividers and borders
      --clr-text        Primary text
      --clr-text-muted  Secondary/body text
-     --clr-text-subtle Placeholder / de-emphasized text
+     --clr-text-subtle Placeholder / de-emphasised text
      --shadow-sm/md/lg Box shadow levels
      --nav-blur-bg     Frosted glass nav background
    ================================================================ */
 
 /* ---------------------------------------------------------------
-   ROOT — Accent colors + design scale (theme-independent)
+   ROOT — Design scale tokens (theme-independent)
 --------------------------------------------------------------- */
 :root {
-  /* Accent palette — change these two lines to shift the whole color scheme */
-  --clr-accent:           #7f5af0;
-  --clr-accent-rgb:       127, 90, 240;
-  --clr-secondary:        #2cb67d;
-  --clr-secondary-rgb:    44, 182, 125;
-
   /* Typography scale */
-  --fs-xs:   0.75rem;
-  --fs-sm:   0.875rem;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
   --fs-base: 1rem;
-  --fs-lg:   1.125rem;
-  --fs-xl:   1.25rem;
-  --fs-2xl:  1.5rem;
-  --fs-3xl:  1.875rem;
-  --fs-4xl:  2.25rem;
-  --fs-5xl:  3rem;
-  --fs-6xl:  3.75rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 1.875rem;
+  --fs-4xl: 2.25rem;
+  --fs-5xl: 3rem;
+  --fs-6xl: 3.75rem;
 
   /* Spacing scale */
-  --sp-1:  0.25rem;
-  --sp-2:  0.5rem;
-  --sp-3:  0.75rem;
-  --sp-4:  1rem;
-  --sp-5:  1.25rem;
-  --sp-6:  1.5rem;
-  --sp-8:  2rem;
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
   --sp-10: 2.5rem;
   --sp-12: 3rem;
   --sp-16: 4rem;
@@ -60,14 +59,14 @@
   --sp-24: 6rem;
 
   /* Layout */
-  --max-width:  980px;
+  --max-width: 980px;
   --nav-height: 68px;
 
   /* Border radius */
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -76,38 +75,117 @@
   --t-slow: 400ms ease;
 }
 
+/* ================================================================
+   THEME PRESETS
+   ================================================================
+   One block active at a time.
+   To switch: comment the active block, uncomment the desired one.
+
+   Accent  → buttons, links, nav-dot, glows, highlights
+   Secondary → status dot, secondary badge accents
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   1. PURPLE  ← ACTIVE
+---------------------------------------------------------------- */
+:root {
+  --clr-accent: #7f5af0;
+  --clr-accent-rgb: 127, 90, 240;
+  --clr-secondary: #2cb67d;
+  --clr-secondary-rgb: 44, 182, 125;
+}
+
+/* ---------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------------
+   2. OCEAN  (uncomment to activate, comment PURPLE above)
+---------------------------------------------------------------- */
+/*
+:root {
+  --clr-accent:        #2563eb;
+  --clr-accent-rgb:    37, 99, 235;
+  --clr-secondary:     #06b6d4;
+  --clr-secondary-rgb: 6, 182, 212;
+}
+*/
+/* ---------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------------
+   3. EMERALD  (uncomment to activate, comment active theme above)
+---------------------------------------------------------------- */
+/*
+:root {
+  --clr-accent:        #059669;
+  --clr-accent-rgb:    5, 150, 105;
+  --clr-secondary:     #d97706;
+  --clr-secondary-rgb: 217, 119, 6;
+}
+*/
+/* ---------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------------
+   4. ROSE  (uncomment to activate, comment active theme above)
+---------------------------------------------------------------- */
+/*
+:root {
+  --clr-accent:        #e11d48;
+  --clr-accent-rgb:    225, 29, 72;
+  --clr-secondary:     #9333ea;
+  --clr-secondary-rgb: 147, 51, 234;
+}
+*/
+/* ---------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------------
+   5. AMBER  (uncomment to activate, comment active theme above)
+---------------------------------------------------------------- */
+/*
+:root {
+  --clr-accent:        #d97706;
+  --clr-accent-rgb:    217, 119, 6;
+  --clr-secondary:     #0891b2;
+  --clr-secondary-rgb: 8, 145, 178;
+}
+*/
+/* ---------------------------------------------------------------- */
+
+
 /* ---------------------------------------------------------------
    DARK THEME
 --------------------------------------------------------------- */
 [data-theme="dark"] {
-  --clr-bg:          #0f0f13;
-  --clr-surface:     #1a1a24;
-  --clr-surface-2:   #22222f;
-  --clr-border:      rgba(255, 255, 255, 0.07);
-  --clr-text:        #fffffe;
-  --clr-text-muted:  #94a1b2;
+  --clr-bg: #0f0f13;
+  --clr-surface: #1a1a24;
+  --clr-surface-2: #22222f;
+  --clr-border: rgba(255, 255, 255, 0.07);
+  --clr-text: #fffffe;
+  --clr-text-muted: #94a1b2;
   --clr-text-subtle: #545e6f;
-  --shadow-sm:       0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md:       0 4px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg:       0 8px 40px rgba(0, 0, 0, 0.6);
-  --nav-blur-bg:     rgba(15, 15, 19, 0.85);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --nav-blur-bg: rgba(15, 15, 19, 0.85);
 }
 
 /* ---------------------------------------------------------------
    LIGHT THEME
 --------------------------------------------------------------- */
 [data-theme="light"] {
-  --clr-bg:          #f4f4f9;
-  --clr-surface:     #ffffff;
-  --clr-surface-2:   #ececf4;
-  --clr-border:      rgba(0, 0, 0, 0.08);
-  --clr-text:        #16161a;
-  --clr-text-muted:  #4a5568;
+  --clr-bg: #f4f4f9;
+  --clr-surface: #ffffff;
+  --clr-surface-2: #ececf4;
+  --clr-border: rgba(0, 0, 0, 0.08);
+  --clr-text: #16161a;
+  --clr-text-muted: #4a5568;
   --clr-text-subtle: #8a929f;
-  --shadow-sm:       0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md:       0 4px 24px rgba(0, 0, 0, 0.1);
-  --shadow-lg:       0 8px 40px rgba(0, 0, 0, 0.14);
-  --nav-blur-bg:     rgba(244, 244, 249, 0.85);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.14);
+  --nav-blur-bg: rgba(244, 244, 249, 0.85);
 }
 
 
@@ -528,8 +606,17 @@ button {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(var(--clr-secondary-rgb), 0.5); }
-  50%       { opacity: 0.8; box-shadow: 0 0 0 4px rgba(var(--clr-secondary-rgb), 0); }
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(var(--clr-secondary-rgb), 0.5);
+  }
+
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 4px rgba(var(--clr-secondary-rgb), 0);
+  }
 }
 
 .hero-cta {
@@ -592,15 +679,41 @@ button {
 }
 
 @keyframes scroll-indicator {
-  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
-  45%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  55%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 1;
+  }
+
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 
@@ -1013,6 +1126,7 @@ button {
    RESPONSIVE — MOBILE NAV (max 768px)
 ================================================================ */
 @media (max-width: 768px) {
+
   /* Show hamburger, hide nav links by default */
   .nav-hamburger {
     display: flex;
@@ -1118,6 +1232,7 @@ button {
    ACCESSIBILITY — Reduced motion
 ================================================================ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
