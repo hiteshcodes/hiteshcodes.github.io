@@ -565,6 +565,16 @@ button {
   margin-bottom: var(--sp-3);
 }
 
+.hero-handle {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  font-family: 'Space Mono', monospace, ui-monospace;
+  color: var(--clr-accent);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--sp-3);
+  opacity: 0.85;
+}
+
 .hero-title {
   font-size: clamp(var(--fs-lg), 3vw, var(--fs-2xl));
   font-weight: 500;
