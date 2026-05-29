@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"e:\\\\dev\\\\git-repos\\\\hiteshcodes.github.io\" -Recurse -Force | Format-Table -Property @{Name='Path'; Expression={$_.FullName -replace [regex]::Escape\\('e:\\\\dev\\\\git-repos\\\\hiteshcodes.github.io'\\), ''}}, PSIsContainer -AutoSize)"
+    ]
+  }
+}
